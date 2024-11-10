@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: testers-training
+  datasource:
+    url: jdbc:h2:file:./testers-training-db
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+  jpa:
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+    show-sql: true
+  h2:
+    console:
+      enabled: true
+      web-allow-others: true
+      trace: true
