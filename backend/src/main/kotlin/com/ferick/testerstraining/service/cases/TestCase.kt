@@ -1,10 +1,10 @@
 package com.ferick.testerstraining.service.cases
 
-import com.ferick.testerstraining.model.dto.TestCaseRequest
+import com.ferick.testerstraining.model.dto.TestCaseData
 
 interface TestCase {
     val type: TestCaseType
-    fun match(request: TestCaseRequest): Boolean
+    fun match(expected: TestCaseData, actual: TestCaseData): Boolean
 }
 
 enum class TestCaseType {
