@@ -9,11 +9,13 @@ import com.ferick.testerstraining.model.dto.UserIdInitRequest
 import com.ferick.testerstraining.repository.UserDataRepository
 import com.ferick.testerstraining.service.LoginFormService
 import com.ferick.testerstraining.service.cases.LoginFormTestCase
+import com.ferick.testerstraining.service.generators.DataGenerator
 import org.springframework.stereotype.Service
 
 @Service
 class LoginFormServiceImpl(
-    private val userDataRepository: UserDataRepository
+    private val userDataRepository: UserDataRepository,
+    private val generator: DataGenerator
 ) : LoginFormService {
 
     override fun initLoginFormTraining(request: UserIdInitRequest): LoginFormInitResponse {
@@ -23,13 +25,15 @@ class LoginFormServiceImpl(
                     it as LoginFormPrecondition
                 }
             }
+            val testCasesCheckedCount = userData.stats[LoginFormTestCase::class.key()]?.cases?.size ?: 0
             LoginFormInitResponse(
                 userId = userData.userId,
-                username = precondition?.username ?: "",
-                password = precondition?.password ?: ""
+                testCasesCheckedCount = testCasesCheckedCount,
+                username = precondition?.username ?: generator.generateUsername(),
+                password = precondition?.password ?: generator.generatePassword()
             )
         } ?: run {
-            val precondition = LoginFormPrecondition("", "")
+            val precondition = LoginFormPrecondition(generator.generateUsername(), generator.generatePassword())
             val userData = UserData(
                 userId = request.userId
             ).apply {
@@ -38,6 +42,7 @@ class LoginFormServiceImpl(
             userDataRepository.save(userData).let {
                 LoginFormInitResponse(
                     userId = it.userId,
+                    testCasesCheckedCount = 0,
                     username = precondition.username,
                     password = precondition.password
                 )
