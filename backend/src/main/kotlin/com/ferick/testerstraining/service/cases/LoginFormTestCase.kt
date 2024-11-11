@@ -60,6 +60,10 @@ enum class LoginFormTestCase(override val type: TestCaseType) : TestCase {
     };
 
     companion object {
+        fun checkTestCase(expected: TestCaseData, actual: TestCaseData): LoginFormTestCase =
+            entries.find { it.match(expected, actual) }
+                ?: throw IllegalStateException("There is no test case matching request")
+
         private fun castData(
             expected: TestCaseData,
             actual: TestCaseData

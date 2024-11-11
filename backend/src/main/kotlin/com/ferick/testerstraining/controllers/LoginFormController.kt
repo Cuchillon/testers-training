@@ -1,6 +1,8 @@
 package com.ferick.testerstraining.controllers
 
 import com.ferick.testerstraining.model.dto.LoginFormInitResponse
+import com.ferick.testerstraining.model.dto.LoginFormTestCaseRequest
+import com.ferick.testerstraining.model.dto.LoginFormTestCaseResponse
 import com.ferick.testerstraining.model.dto.UserIdInitRequest
 import com.ferick.testerstraining.service.LoginFormService
 import org.springframework.web.bind.annotation.PostMapping
@@ -18,4 +20,9 @@ class LoginFormController(
     fun initLoginFormTraining(
         @RequestBody request: UserIdInitRequest
     ): LoginFormInitResponse = loginFormService.initLoginFormTraining(request)
+
+    @PostMapping("/login-form/case")
+    fun checkTestCaseMatching(
+        @RequestBody request: LoginFormTestCaseRequest
+    ): LoginFormTestCaseResponse = loginFormService.checkTestCaseMatching(request)
 }
