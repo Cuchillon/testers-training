@@ -1,5 +1,6 @@
 package com.ferick.testerstraining.service.impl
 
+import com.ferick.testerstraining.common.extensions.append
 import com.ferick.testerstraining.common.extensions.key
 import com.ferick.testerstraining.model.db.dto.LoginFormPrecondition
 import com.ferick.testerstraining.model.db.dto.TestCaseStat
@@ -59,6 +60,8 @@ class LoginFormServiceImpl(
             val stat = getLoginFormStat(userData)
             val precondition = (stat.precondition!!) as LoginFormPrecondition
             val matched = LoginFormTestCase.checkTestCase(precondition.expectedTestData, request.testCaseData)
+            stat.cases.append(matched)
+            userDataRepository.save(userData)
             LoginFormTestCaseResponse(
                 userId = request.userId,
                 testCasesCheckedCount = stat.cases.size,
