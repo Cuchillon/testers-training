@@ -1,0 +1,5 @@
+@mixin flex-vertical-canter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
