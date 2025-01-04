@@ -1,7 +1,7 @@
 @use '../../../../assets/styles/mixins' as mixins;
 
 .login-form-container {
-  @include mixins.flex-vertical-canter;
+  @include mixins.flex-vertical-center;
   background-color: lightblue;
   width: 300px;
   border: 2px solid black;
@@ -11,7 +11,7 @@
 }
 
 .form-flex-container {
-  @include mixins.flex-vertical-canter;
+  @include mixins.flex-vertical-center;
 
   input {
     margin-top: 3px;

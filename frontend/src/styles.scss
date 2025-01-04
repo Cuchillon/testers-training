@@ -1,7 +1,7 @@
 @use 'assets/styles/mixins' as mixins;
 
 .content-container {
-  @include mixins.flex-vertical-canter;
+  @include mixins.flex-vertical-center;
   width: 100%;
   background-color: rgb(222, 222, 207);
 
