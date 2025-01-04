@@ -1,0 +1,16 @@
+/* You can add global styles to this file, and also import other style files */
+@mixin flex-vertical-canter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.content-container {
+  @include flex-vertical-canter;
+  width: 100%;
+  background-color: rgb(222, 222, 207);
+
+  div {
+    margin: 20px;
+  }
+}

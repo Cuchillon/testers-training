@@ -1,0 +1,21 @@
+@import "../../../../styles.scss";
+
+.login-form-container {
+  @include flex-vertical-canter;
+  background-color: lightblue;
+  width: 300px;
+  border: 2px solid black;
+  border-radius: 0.5em;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.form-flex-container {
+  @include flex-vertical-canter;
+
+  input {
+    margin-top: 3px;
+    margin-bottom: 5px;
+  }
+}
+

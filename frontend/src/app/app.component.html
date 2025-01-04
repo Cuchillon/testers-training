@@ -1,0 +1,9 @@
+<div class="app-container">
+  <app-navigation />
+  <div class="content-container">
+    @if (isStartScreen()) {
+      <p>Привет! <span>Можешь выбрать любой тренажер для тестирования</span></p>
+    }
+    <router-outlet />
+  </div>
+</div>
