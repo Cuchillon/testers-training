@@ -1,9 +1,7 @@
 @use 'assets/styles/mixins' as mixins;
 
-.content-container {
+.content-flex-container {
   @include mixins.flex-vertical-center;
-  width: 100%;
-  background-color: rgb(222, 222, 207);
 
   div {
     margin: 20px;
