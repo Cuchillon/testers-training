@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { RouterOutlet } from '@angular/router';
 import { NavigationComponent } from './components/shared/navigation/navigation.component';
 import { SessionStorageService } from 'ngx-webstorage';
 import { USER_UD_KEY } from './common/constants';
@@ -8,19 +8,16 @@ import { USER_UD_KEY } from './common/constants';
   selector: 'app-root',
   imports: [RouterOutlet, NavigationComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent implements OnInit {
 
-  constructor(private router: Router, private sessionStorageService: SessionStorageService) {}
+  constructor(private sessionStorageService: SessionStorageService) {}
 
   ngOnInit(): void {
     if (!this.sessionStorageService.retrieve(USER_UD_KEY)) {
       this.sessionStorageService.store(USER_UD_KEY, crypto.randomUUID());
     }
-  }
-
-  protected isStartScreen() {
-    return this.router.url === '/'
   }
 }
