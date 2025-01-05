@@ -22,6 +22,7 @@ export class LoginFormComponent {
   protected initData: Signal<LoginFormInitResponse|undefined>;
   protected username = computed(() => this.initData()?.username ?? '');
   protected password = computed(() => this.initData()?.password ?? '');
+  protected testCasesAllCount = computed(() => this.initData()?.testCasesAllCount ?? 0);
   protected testCasesCheckedCount = signal(0);
 
   protected readonly loginForm = new FormGroup({
