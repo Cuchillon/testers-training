@@ -1,17 +1,17 @@
 <div class="content-flex-container">
   <div>
-    Login: user, password: pass
+    Login: {{ username() }}, password: {{ password() }}
   </div>
   <div class="login-form-container">
-    <form class="form-flex-container">
+    <form class="form-flex-container" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
       <label for="login">Login</label><br>
-      <input id="login" type="text"><br>
+      <input id="login" type="text" formControlName="username"><br>
       <label for="password">Password</label><br>
-      <input id="password" type="password"><br>
-      <button type="button">Enter</button>
+      <input id="password" type="text" formControlName="password"><br>
+      <button type="submit">Enter</button>
     </form>
   </div>
   <div>
-    Найденных кейсов: 0
+    Найденных кейсов: {{ testCasesCheckedCount() }}
   </div>
 </div>
