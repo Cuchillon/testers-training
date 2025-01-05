@@ -1,0 +1,21 @@
+@use '../../../../assets/styles/mixins' as mixins;
+
+.login-form-container {
+  @include mixins.flex-vertical-center;
+  background-color: lightblue;
+  width: 300px;
+  border: 2px solid black;
+  border-radius: 0.5em;
+  padding-top: 7px;
+  padding-bottom: 7px;
+}
+
+.form-flex-container {
+  @include mixins.flex-vertical-center;
+
+  input {
+    margin-top: 3px;
+    margin-bottom: 5px;
+  }
+}
+

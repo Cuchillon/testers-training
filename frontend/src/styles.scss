@@ -1,0 +1,9 @@
+@use 'assets/styles/mixins' as mixins;
+
+.content-flex-container {
+  @include mixins.flex-vertical-center;
+
+  div {
+    margin: 20px;
+  }
+}
