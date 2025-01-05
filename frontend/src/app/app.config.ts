@@ -4,12 +4,16 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { provideNgxWebstorage, withSessionStorage } from 'ngx-webstorage';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { provideAnimations } from '@angular/platform-browser/animations';
+import { provideToastr } from 'ngx-toastr';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideNgxWebstorage(withSessionStorage()),
-    provideHttpClient(withInterceptorsFromDi())
+    provideHttpClient(withInterceptorsFromDi()),
+    provideAnimations(),
+    provideToastr()
   ]
 };
