@@ -32,6 +32,7 @@ class LoginFormServiceImpl(
             LoginFormInitResponse(
                 userId = userData.userId,
                 testCasesCheckedCount = stat.cases.size,
+                testCasesAllCount = LoginFormTestCase.entries.size,
                 username = precondition?.expectedTestData?.username ?: generator.generateUsername(),
                 password = precondition?.expectedTestData?.password ?: generator.generatePassword()
             )
@@ -48,6 +49,7 @@ class LoginFormServiceImpl(
                 LoginFormInitResponse(
                     userId = it.userId,
                     testCasesCheckedCount = 0,
+                    testCasesAllCount = LoginFormTestCase.entries.size,
                     username = precondition.expectedTestData.username,
                     password = precondition.expectedTestData.password
                 )
