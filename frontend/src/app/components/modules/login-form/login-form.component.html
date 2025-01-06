@@ -1,6 +1,10 @@
 <div class="content-flex-container">
   <div>
-    Login: {{ username() }}, password: {{ password() }}
+    @if (isLoading()) {
+      <ng-container *ngTemplateOutlet="loading"></ng-container>
+    } @else {
+      Login: {{ username() }}, password: {{ password() }}
+    }
   </div>
   <div class="login-form-container">
     <form class="form-flex-container" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
@@ -12,6 +16,12 @@
     </form>
   </div>
   <div>
-    Найденных кейсов: {{ testCasesCheckedCount() }} из {{ testCasesAllCount() }}
+    @if (isLoading()) {
+      <ng-container *ngTemplateOutlet="loading"></ng-container>
+    } @else {
+      Найденных кейсов: {{ testCasesCheckedCount() }} из {{ testCasesAllCount() }}
+    }
   </div>
 </div>
+
+<ng-template #loading>Обновление данных...</ng-template>

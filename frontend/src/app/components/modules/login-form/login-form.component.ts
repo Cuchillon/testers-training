@@ -16,10 +16,11 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { LoginFormTestCaseData } from '../../../model/test-case-data';
 import { ToastrService } from 'ngx-toastr';
 import { LoginFormState } from '../../../model/login-form-state';
+import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
   selector: 'app-login-form',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, NgTemplateOutlet],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
