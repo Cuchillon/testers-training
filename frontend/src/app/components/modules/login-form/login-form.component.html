@@ -8,7 +8,7 @@
       <input id="login" type="text" formControlName="username"><br>
       <label for="password">Password</label><br>
       <input id="password" type="text" formControlName="password"><br>
-      <button type="submit">Enter</button>
+      <button type="submit" [disabled]="isLoading()">Enter</button>
     </form>
   </div>
   <div>

@@ -5,5 +5,5 @@ export interface TestCaseResponse {
 }
 
 export interface LoginFormTestCaseResponse extends TestCaseResponse {
-  errorMessage?: string
+  errorMessage?: string;
 }
