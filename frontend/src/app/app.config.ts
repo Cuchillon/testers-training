@@ -6,6 +6,7 @@ import { provideNgxWebstorage, withSessionStorage } from 'ngx-webstorage';
 import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
+import { provideLoadingBarInterceptor } from '@ngx-loading-bar/http-client';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -13,6 +14,7 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideNgxWebstorage(withSessionStorage()),
     provideHttpClient(withInterceptorsFromDi()),
+    provideLoadingBarInterceptor(),
     provideAnimations(),
     provideToastr()
   ]
