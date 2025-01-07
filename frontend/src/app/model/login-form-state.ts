@@ -5,5 +5,4 @@ export interface LoginFormState {
   testCasesCheckedCount: number;
   testCaseType?: 'POSITIVE'|'NEGATIVE';
   errorMessage?: string;
-  apiError?: string;
 }
