@@ -3,10 +3,11 @@ import { RouterOutlet } from '@angular/router';
 import { NavigationComponent } from './components/shared/navigation/navigation.component';
 import { SessionStorageService } from 'ngx-webstorage';
 import { USER_UD_KEY } from './common/constants';
+import { NgxLoadingBar } from '@ngx-loading-bar/core';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavigationComponent],
+  imports: [RouterOutlet, NavigationComponent, NgxLoadingBar],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush

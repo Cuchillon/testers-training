@@ -16,20 +16,20 @@ import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { LoginFormTestCaseData } from '../../../model/test-case-data';
 import { ToastrService } from 'ngx-toastr';
 import { LoginFormState } from '../../../model/login-form-state';
-import { NgTemplateOutlet } from '@angular/common';
+import { LoadingComponent } from '../../shared/loading/loading.component';
 
 @Component({
   selector: 'app-login-form',
-  imports: [ReactiveFormsModule, NgTemplateOutlet],
+  imports: [ReactiveFormsModule, LoadingComponent],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LoginFormComponent {
   private destroyRef = inject(DestroyRef);
-  protected userId: string = '';
+  private userId: string = '';
 
-  protected state: WritableSignal<LoginFormState> = signal({
+  private state: WritableSignal<LoginFormState> = signal({
     username: '',
     password: '',
     testCasesAllCount: 0,

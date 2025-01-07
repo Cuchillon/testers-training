@@ -18,6 +18,8 @@
     "@angular/platform-browser": "^19.0.0",
     "@angular/platform-browser-dynamic": "^19.0.0",
     "@angular/router": "^19.0.0",
+    "@ngx-loading-bar/core": "^7.0.0",
+    "@ngx-loading-bar/http-client": "^7.0.0",
     "ngx-toastr": "^19.0.0",
     "ngx-webstorage": "^19.0.1",
     "rxjs": "~7.8.0",
