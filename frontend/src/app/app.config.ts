@@ -3,10 +3,11 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideNgxWebstorage, withSessionStorage } from 'ngx-webstorage';
-import { provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { provideToastr } from 'ngx-toastr';
 import { provideLoadingBarInterceptor } from '@ngx-loading-bar/http-client';
+import { ApiErrorHandlingService } from './services/api-error-handling.service';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -16,6 +17,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withInterceptorsFromDi()),
     provideLoadingBarInterceptor(),
     provideAnimations(),
-    provideToastr()
+    provideToastr(),
+    { provide: HTTP_INTERCEPTORS, useClass: ApiErrorHandlingService, multi: true },
   ]
 };
