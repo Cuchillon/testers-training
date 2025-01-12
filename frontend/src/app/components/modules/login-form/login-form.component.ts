@@ -1,6 +1,5 @@
-import { ChangeDetectionStrategy, Component, effect, inject, OnInit } from '@angular/core';
-import { SessionStorageService } from 'ngx-webstorage';
-import { SUCCESS_LOGIN_MESSAGE, USER_UD_KEY } from '../../../common/constants';
+import { ChangeDetectionStrategy, Component, effect, inject } from '@angular/core';
+import { SUCCESS_LOGIN_MESSAGE } from '../../../common/constants';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { LoginFormTestCaseData } from '../../../model/test-case-data';
 import { ToastrService } from 'ngx-toastr';
@@ -15,8 +14,7 @@ import { LoginFormStore } from '../../../state/login-form.store';
   providers: [LoginFormStore],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LoginFormComponent implements OnInit {
-  private readonly userId: string;
+export class LoginFormComponent {
   protected readonly store = inject(LoginFormStore);
 
   protected readonly loginForm = new FormGroup({
@@ -24,12 +22,7 @@ export class LoginFormComponent implements OnInit {
     password: new FormControl('')
   });
 
-  constructor(
-    private sessionStorageService: SessionStorageService,
-    private toastrService: ToastrService,
-  ) {
-    this.userId = this.sessionStorageService.retrieve(USER_UD_KEY);
-
+  constructor(private toastrService: ToastrService) {
     effect(() => {
       const currentCase = this.store.data().testCaseType;
       if (currentCase === 'NEGATIVE') {
@@ -40,15 +33,11 @@ export class LoginFormComponent implements OnInit {
     });
   }
 
-  ngOnInit(): void {
-    this.store.loadInitData(this.userId);
-  }
-
   protected onSubmit() {
     const enteredLogin = this.loginForm.controls['username'].value ?? '';
     const enteredPassword = this.loginForm.controls['password'].value ?? '';
     const data: LoginFormTestCaseData = { username: enteredLogin, password: enteredPassword };
-    this.store.loadTestCaseData({ userId: this.userId, testCaseData: data });
+    this.store.loadTestCaseData(data);
     this.loginForm.reset();
   }
 
