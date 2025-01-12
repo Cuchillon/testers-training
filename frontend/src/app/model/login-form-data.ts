@@ -1,4 +1,4 @@
-export interface LoginFormState {
+export interface LoginFormData {
   username: string;
   password: string;
   testCasesAllCount: number;

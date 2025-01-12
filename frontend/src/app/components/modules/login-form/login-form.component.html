@@ -1,7 +1,7 @@
 <div class="content-flex-container">
   <div>
-    <app-loading [isLoading]="isLoading()">
-      Login: {{ username() }}, password: {{ password() }}
+    <app-loading [isLoading]="store.isLoading()">
+      Login: {{ store.data.username() }}, password: {{ store.data.password() }}
     </app-loading>
   </div>
   <div class="login-form-container">
@@ -10,12 +10,12 @@
       <input id="login" type="text" formControlName="username"><br>
       <label for="password">Password</label><br>
       <input id="password" type="text" formControlName="password"><br>
-      <button type="submit" [disabled]="isLoading()">Enter</button>
+      <button type="submit" [disabled]="store.isLoading()">Enter</button>
     </form>
   </div>
   <div>
-    <app-loading [isLoading]="isLoading()">
-      Найденных кейсов: {{ testCasesCheckedCount() }} из {{ testCasesAllCount() }}
+    <app-loading [isLoading]="store.isLoading()">
+      Найденных кейсов: {{ store.data.testCasesCheckedCount() }} из {{ store.data.testCasesAllCount() }}
     </app-loading>
   </div>
 </div>
