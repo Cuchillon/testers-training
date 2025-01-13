@@ -6,7 +6,7 @@ import { rxMethod } from '@ngrx/signals/rxjs-interop';
 import { pipe, switchMap, tap } from 'rxjs';
 import { tapResponse } from '@ngrx/operators';
 import { SessionStorageService } from 'ngx-webstorage';
-import { USER_UD_KEY } from '../common/constants';
+import { USER_ID_KEY } from '../common/constants';
 import { LoginFormTestCaseData } from '../model/test-case-data';
 
 type LoginFormState = {
@@ -76,7 +76,7 @@ export const LoginFormStore = signalStore(
   })),
   withHooks((store, sessionStorageService = inject(SessionStorageService)) => ({
     onInit: () => {
-      const userId = sessionStorageService.retrieve(USER_UD_KEY);
+      const userId = sessionStorageService.retrieve(USER_ID_KEY);
       patchState(store, { _userId: userId });
       store.loadInitData(store._userId);
     }
